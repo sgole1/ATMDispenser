@@ -48,7 +48,7 @@ public class ATMDipenserApiController {
 		if (dispersedCurrencies != null && dispersedCurrencies.size() > 0) {
 			dispersedAmountDetails = dispersedCurrencies.toString();
 		} else {
-			dispersedAmountDetails = "Denominations are available in the multiple of 50 & 20$ only and should not exceepd the bank limit";
+			dispersedAmountDetails = "Denominations are available in the multiple of 50 & 20$ only and should not exceed the bank limit";
 		}
 
 		return new ResponseEntity<String>(dispersedAmountDetails, HttpStatus.OK);
