@@ -49,8 +49,8 @@ public class CurrencyDispenserServiceImpl implements CurrencyDispenserService {
 					amountToBeDispersed = remainingCurrencyToBeWithdraw;
 				}else{
 					amountToBeDispersed = 0;
-					isAmountDispersedSuccessfully = true;
-					atm.updateCurrency(dispersedCurrencies);
+					isAmountDispersedSuccessfully = atm.updateCurrency(dispersedCurrencies);
+					logger.info("isAmountDispersedSuccessfully :"+isAmountDispersedSuccessfully);
 					break;
 				}
 			}

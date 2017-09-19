@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.atmdispenser.constant.Denomination;
 
+
 /**
  * @author sumit
  * The value object containing the all available currencies and their count in ATM. It exposes the method to
@@ -39,12 +40,21 @@ public class ATM {
 		return availableDenominations;
 	}
 	
-	public void updateCurrency(Map<Denomination, Integer> dispersedCurrency) {
+	public boolean updateCurrency(Map<Denomination, Integer> dispersedCurrency) {
+		boolean currencyUpdateFlag = false;
 		for(Denomination denomination : dispersedCurrency.keySet()){
 			int totalAvailableCurrency = availableCurrencies.get(denomination);
 			totalAvailableCurrency = totalAvailableCurrency - dispersedCurrency.get(denomination);
-			availableCurrencies.put(denomination, totalAvailableCurrency);
+			if (totalAvailableCurrency > 0) {
+				availableCurrencies.put(denomination, totalAvailableCurrency);
+				currencyUpdateFlag = true;
+			}else{
+				currencyUpdateFlag = false;
+				break;
+			}
+			
 		}
+		return currencyUpdateFlag;
 		
 	}
 	
